@@ -46,8 +46,14 @@ public class Comentario {
 
     @Override
     public String toString() {
-        return "Comentario [idComentario=" + idComentario + ", idCasa=" + idCasa + ", comentario=" + comentario + "]";
-    }
+    return String.format(
+        "Comentario:\n" +
+        "  ID Comentario: %d\n" +
+        "  ID Casa: %d\n" +
+        "  Texto: %s\n",
+        idComentario, idCasa, comentario
+    );
+}
 
     
     

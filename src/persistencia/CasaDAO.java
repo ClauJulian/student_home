@@ -28,7 +28,7 @@ public class CasaDAO extends DAO {
     }
 
     public List<Casa> listarTodasLasCasas() throws Exception {
-        String sql = "SELECT id_casa, calle, numero, ciudad, pais, precio_habitacion, tipo_vivienda FROM casas";
+        String sql = "SELECT id_casa, calle, numero, ciudad, pais, fecha_desde, fecha_hasta, precio_habitacion, tipo_vivienda FROM casas";
         consultarDataBase(sql);
 
         List<Casa> casas = new ArrayList<>();
@@ -39,6 +39,8 @@ public class CasaDAO extends DAO {
             casa.setNumero(resultSet.getInt("numero"));
             casa.setCiudad(resultSet.getString("ciudad"));
             casa.setPais(resultSet.getString("pais"));
+            casa.setFechaDesde(resultSet.getDate("fecha_desde").toLocalDate());
+            casa.setFechaHasta(resultSet.getDate("fecha_hasta").toLocalDate());
             casa.setPrecioHabitacion(resultSet.getDouble("precio_habitacion"));
             casa.setTipoVivienda(resultSet.getString("tipo_vivienda"));
             casas.add(casa);
@@ -67,6 +69,7 @@ public class CasaDAO extends DAO {
         String sql = "SELECT * from casas where id_casa = " + id + ";";
         consultarDataBase(sql);
         Casa casaEncontrada = null;
+        
         while (resultSet.next()) {
             casaEncontrada = crearCasa();
         }

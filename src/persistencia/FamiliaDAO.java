@@ -50,8 +50,8 @@ public class FamiliaDAO extends DAO{
           familia.setEmail(resultSet.getString("email"));
           familia.setIdCasaFamilia(resultSet.getInt("id_casa_familia"));
           familias.add(familia);
-          System.out.println(familia.toString());
-          System.out.println(" ");
+          //System.out.println(familia.toString());
+          //System.out.println(" ");
         }
         return familias;
       }

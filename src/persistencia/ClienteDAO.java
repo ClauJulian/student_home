@@ -44,12 +44,19 @@ public class ClienteDAO extends DAO {
 
     public Cliente buscarClientePorID(int id) throws Exception {
         // script sql
-        String sql = "SELECT id_cliente, nombre, calle, numero, codigo_postal, ciudad, pais, email FROM clientes WHERE id = "
-                + id;
+        String sql = "SELECT id_cliente, nombre, calle, numero, codigo_postal, ciudad, pais, email FROM clientes WHERE id_cliente = " + id + ";";
         // método DAO
         consultarDataBase(sql);
-        //
-        Cliente cliente = crearCliente();
+        Cliente cliente = null;
+
+        while (resultSet.next()) {
+            cliente = crearCliente();
+        }
+        if (cliente == null) {
+            System.out.printf("Casa con ID %s no encontrada", id);
+        } else {
+            //System.out.println(cliente.toString());
+        }
         return cliente;
     }
 
@@ -59,14 +66,16 @@ public class ClienteDAO extends DAO {
             throw new Exception("No existe el registro!!");
         }
         // crear un nuevo cliente
-        return new Cliente(resultSet.getInt("id_cliente"),
-                resultSet.getString("nombre"),
-                resultSet.getString("calle"),
-                resultSet.getInt("numero"),
-                resultSet.getInt("codigo_postal"),
-                resultSet.getString("ciudad"),
-                resultSet.getString("pais"),
-                resultSet.getString("email"));
+        Cliente cliente = new Cliente(
+        resultSet.getInt("id_cliente"),
+        resultSet.getString("nombre"),
+        resultSet.getString("calle"),
+        resultSet.getInt("numero"),
+        resultSet.getInt("codigo_postal"),
+        resultSet.getString("ciudad"),
+        resultSet.getString("pais"),
+        resultSet.getString("email"));
+        return cliente;
     }
 }
 

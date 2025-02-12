@@ -91,9 +91,18 @@ public class Familia {
 
     @Override
     public String toString() {
-        return "Familia [idFamilia=" + idFamilia + ", nombre=" + nombre + ", edadMinima=" + edadMinima + ", edadMaxima="
-                + edadMaxima + ", numHijos=" + numHijos + ", email=" + email + ", idCasaFamilia=" + idCasaFamilia + "]";
-    }
+    return String.format(
+        "Familia:\n" +
+        "  ID: %d\n" +
+        "  Nombre: %s\n" +
+        "  Edad mínima: %d\n" +
+        "  Edad máxima: %d\n" +
+        "  Número de hijos: %d\n" +
+        "  Email: %s\n" +
+        "  ID Casa Familia: %d\n",
+        idFamilia, nombre, edadMinima, edadMaxima, numHijos, email, idCasaFamilia
+    );
+}
 
     
     

@@ -102,9 +102,20 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Ciente [idCliente=" + idCliente + ", nombre=" + nombre + ", calle=" + calle + ", numero=" + numero
-                + ", codigoPostal=" + codigoPostal + ", ciudad=" + ciudad + ", pais=" + pais + ", email=" + email + "]";
-    }
+    return String.format(
+        "Cliente:\n" +
+        "  ID: %d\n" +
+        "  Nombre: %s\n" +
+        "  Dirección:\n" +
+        "    Calle: %s\n" +
+        "    Número: %d\n" +
+        "    Código Postal: %s\n" +
+        "    Ciudad: %s\n" +
+        "    País: %s\n" +
+        "  Email: %s\n",
+        idCliente, nombre, calle, numero, codigoPostal, ciudad, pais, email
+    );
+}
 
     
 
